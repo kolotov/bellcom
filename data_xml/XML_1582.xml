@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<root>
+  <org>Acadre Produktion</org>
+  <convertalltopdf>0</convertalltopdf>
+  <showallagendaxml>0</showallagendaxml>
+  <table name="committee">
+    <fields>
+      <field name="&#xD8;konomiudvalget (&#xD8;K)"/>
+      <field sysid="59"/>
+    </fields>
+  </table>
+  <table name="meeting">
+    <fields>
+      <field name="Ekstraordin&#xE6;rt &#xD8;K"/>
+      <field sysid="1449"/>
+      <field date="2012-06-28 09:00"/>
+    </fields>
+  </table>
+  <table name="agenda">
+    <fields>
+      <field name="Till&#xE6;gsreferat"/>
+      <field sysid="1582"/>
+      <field access="1"/>
+    </fields>
+  </table>
+  <table name="producedAgenda">
+    <fields>
+      <field sysid="4968"/>
+      <field xmlFusionID="3384719"/>
+      <field xmlfilename="3384719.xml"/>
+      <field docID="3384720"/>
+      <field docfilename="3384720.doc"/>
+      <field type="1"/>
+      <field comment="Lukket Till&#xE6;gsdagsorden til &#xD8;K 28/6"/>
+      <field fileType="DOC"/>
+      <field access="Lukket"/>
+      <field accessid="2"/>
+      <field publish="0"/>
+      <field publishDate="2012-06-26 08:54"/>
+      <field createdDate="2012-06-26 08:52"/>
+    </fields>
+    <fields>
+      <field sysid="4969"/>
+      <field xmlFusionID="3384729"/>
+      <field xmlfilename="3384729.xml"/>
+      <field docID="3384730"/>
+      <field docfilename="3384730.doc"/>
+      <field type="1"/>
+      <field comment="&#xC5;ben dagsorden til &#xD8;K 28/6"/>
+      <field fileType="DOC"/>
+      <field access="&#xC5;ben"/>
+      <field accessid="1"/>
+      <field publish="0"/>
+      <field publishDate="2012-06-26 08:55"/>
+      <field createdDate="2012-06-26 08:55"/>
+    </fields>
+    <fields>
+      <field sysid="4980"/>
+      <field xmlFusionID="3387434"/>
+      <field xmlfilename="3387434.xml"/>
+      <field docID="3387435"/>
+      <field docfilename="3387435.doc"/>
+      <field type="2"/>
+      <field comment="Till&#xE6;gsreferat"/>
+      <field fileType="DOC"/>
+      <field access="Lukket"/>
+      <field accessid="2"/>
+      <field publish="1"/>
+      <field publishDate="2012-06-28 15:06"/>
+      <field createdDate="2012-06-28 15:02"/>
+      <field filesfolder="Files_1582_3387435"/>
+      <field casePublish="0"/>
+      <field startDate=""/>
+      <field endDate=""/>
+    </fields>
+    <fields>
+      <field sysid="4981"/>
+      <field xmlFusionID="3387436"/>
+      <field xmlfilename="3387436.xml"/>
+      <field docID="3387437"/>
+      <field docfilename="3387437.doc"/>
+      <field type="2"/>
+      <field comment="&#xC5;ben till&#xE6;gsreferat &#xF8;k 28/6-12"/>
+      <field fileType="DOC"/>
+      <field access="&#xC5;ben"/>
+      <field accessid="1"/>
+      <field publish="1"/>
+      <field publishDate="2012-06-28 15:05"/>
+      <field createdDate="2012-06-28 15:03"/>
+    </fields>
+  </table>
+</root>
