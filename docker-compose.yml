@@ -1,25 +1,48 @@
 version: "3.9"
 
 services:
+  web:
+    image: nginx:1.20.1
+    depends_on:
+      - db
+      - php
+    volumes:
+      - ./www:/var/www/site
+      - ./config/nginx.conf:/etc/nginx/conf.d/default.conf  
+    ports:
+      - "8080:80"
+    restart: always
+    working_dir: /var/www/site
+    env_file: ./config/web.env
+
+  php:
+    image: php:7.4-fpm
+    depends_on:
+      - db
+    volumes:
+      - ./www:/var/www/site
 
   db:
-    image: mysql:5.7
+    image: mariadb:10.6.4
     volumes:
       - db_data:/var/lib/mysql
     restart: always
     env_file: ./config/mysql.env
 
-  web:
-    image: nginx
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8000:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
     depends_on:
       - db
+
+  composer:
+    image: composer:2.1.9
     volumes:
-      - ./:/usr/share/nginx/html
-    ports:
-      - "8080:80"
-    restart: always
-    working_dir: /usr/share/nginx/html
-    env_file: ./config/web.env
+    - ./www:/var/www/site
 
 volumes:
   db_data: {}
