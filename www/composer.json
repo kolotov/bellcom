@@ -11,11 +11,18 @@
             "Kolotov\\Bellcom\\": "src/"
         }
     },
+    "autoload-dev": {"Gkolotov\\Bellcom\\": "tests/"},
+
     "authors": [
         {
             "name": "Georgii Kolotov",
             "email": "gkolotov.adv@gmail.com"
         }
     ],
+   "config": {
+        "platform": {
+            "php": "7.4.0"
+        }
+    },
     "require": {}
 }
