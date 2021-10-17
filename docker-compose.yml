@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    env_file: ./config/mysql.env
+
+  web:
+    image: nginx
+    depends_on:
+      - db
+    volumes:
+      - ./:/usr/share/nginx/html
+    ports:
+      - "8080:80"
+    restart: always
+    working_dir: /usr/share/nginx/html
+    env_file: ./config/web.env
+
+volumes:
+  db_data: {}
