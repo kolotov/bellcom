@@ -13,7 +13,7 @@ services:
       - "8080:80"
     restart: always
     working_dir: /var/www/site
-    env_file: ./config/web.env
+    env_file: ./config/mysql.env
 
   php:
     image: php:7.4-fpm
@@ -26,7 +26,9 @@ services:
     image: mariadb:10.6.4
     volumes:
       - db_data:/var/lib/mysql
+      - ./config/init.sql:/data/application/init.sql
     restart: always
+    command: "mysqld --init-file /data/application/init.sql"
     env_file: ./config/mysql.env
 
   phpmyadmin:
