@@ -11,6 +11,7 @@ app_run  = docker-compose run --workdir $(workdir)
 run:
 	docker-compose stop
 	docker-compose up -d --build
+	docker-compose rm -f composer
 
 bash:
 	$(app_exec) web bash
