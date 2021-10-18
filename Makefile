@@ -27,4 +27,4 @@ composer:
 	$(app_run) --rm composer $(cmd)
 
 test:
-	$(app_exec) web  $(phpunit) --testdox --colors=auto tests
+	$(app_exec) php $(phpunit) --testdox --colors=auto tests
