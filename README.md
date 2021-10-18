@@ -9,7 +9,7 @@ make run
 ```
 
 ## How use
-There are meeting # 1580, # 1582
+There are meetings # 1580, # 1582
 
 ### Demo XMLHttpRequest loading
 http://localhost:8080/index.html
