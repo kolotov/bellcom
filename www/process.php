@@ -27,13 +27,13 @@ $db = new DBMeeting(
     $_ENV['MYSQL_DATABASE']
 );
 
-$load_meeting = new LoadMeeting($meeting_id, $db);
 
-if ($load_meeting->Load() === false) {
-    return;
+try {
+    $meeting = $db->getMeetingByID($meeting_id);
+} catch (Exception $e) {
+    exit(1);
 }
 
-$meeting = $load_meeting->getMeeting();
 
 if ($method === 'xml') {
     $xml = $meeting->getXMLData();
