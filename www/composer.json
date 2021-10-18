@@ -8,10 +8,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Kolotov\\Bellcom\\": "src/"
+            "App\\": "src/"
         }
     },
-    "autoload-dev": {"Gkolotov\\Bellcom\\": "tests/"},
+    "autoload-dev": {"App\\": "tests/"},
 
     "authors": [
         {
