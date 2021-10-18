@@ -21,6 +21,7 @@ services:
       - db
     volumes:
       - ./www:/var/www/site
+    env_file: ./config/mysql.env
 
   db:
     image: mariadb:10.6.4
