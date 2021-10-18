@@ -7,6 +7,13 @@ namespace App;
 use Exception;
 use SimpleXMLElement;
 
+/**
+ * The class keep data about meeting and
+ * function for parsing data from file
+ * and function prepare json date
+ *
+ * */
+
 class Meeting
 {
     private $_id;
