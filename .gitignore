@@ -1,3 +1,5 @@
 .DS_Store
 *.swp
 */vendor/
+.php-cs-fixer.cache
+.phpunit.cache/
