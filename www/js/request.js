@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('#btn_submit').click(function () {
-            var id = $('#id').val();
+            var id = $('#id').val().trim();
             ShowMeetingInfoById(id, "result");
             });
 });
