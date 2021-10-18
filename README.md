@@ -5,6 +5,7 @@ First check ports 8080 and 8000 are free in your docker
 
 ```
 git clone https://github.com/kolotov/bellcom.git
+cd bellcom
 make run
 ```
 
