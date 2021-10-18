@@ -11,7 +11,7 @@ class Meeting
 {
     private $_id;
     private $_path;
-    private $_xml;
+    private SimpleXMLElement $_xml;
 
     public function __construct()
     {
@@ -53,6 +53,25 @@ class Meeting
     public function getXMLData(): SimpleXMLElement
     {
         return $this->_xml;
+    }
+
+    public function getJSONData(): string
+    {
+        $matches = $this
+            ->_xml
+            ->xpath("/root/table[@name='meeting']/fields/field/@*");
+
+        $attributes = array_reduce(
+            $matches,
+            function ($attrs, SimpleXMLElement $xml_obj) {
+                $name = $xml_obj->getName();
+                [$attrs[$name],] = (array) $xml_obj->$name;
+                return $attrs;
+            },
+            []
+        );
+
+        return json_encode($attributes);
     }
 
     public function equals(self $other): bool
