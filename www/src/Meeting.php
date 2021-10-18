@@ -31,11 +31,17 @@ class Meeting
 
     public function loadXMLFile(): self
     {
-        if (file_exists($this->_path)) {
-            $this->_xml = simplexml_load_file($this->_path);
-        } else {
-            throw new Exception('Failed to open test.xml.');
+        if (!file_exists($this->_path)) {
+            throw new Exception('File not found');
         }
+
+        $xml = simplexml_load_file($this->_path, null, LIBXML_NOERROR);
+
+        if (!is_object($xml)) {
+            throw new Exception('Parsing error');
+        }
+
+        $this->_xml = $xml;
 
         return $this;
     }
@@ -60,6 +66,10 @@ class Meeting
         $matches = $this
             ->_xml
             ->xpath("/root/table[@name='meeting']/fields/field/@*");
+
+        if (!count($matches)) {
+            throw new Exception("Attribute \"meeting\" not found");
+        }
 
         $attributes = array_reduce(
             $matches,

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App;
 
+use Exception;
+
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
@@ -41,7 +43,11 @@ if ($method === 'xml') {
 }
 
 if ($method === 'json') {
-    $json = $meeting->getJSONData();
+    try {
+        $json = $meeting->getJSONData();
+    } catch (Exception $e) {
+        exit(1);
+    }
     header('Content-Type: application/json; charset=utf-8');
     print($json);
     exit(1);
