@@ -6,8 +6,12 @@ namespace App;
 
 use App\Meeting as Meeting;
 use Exception;
-use mysqli as mysqli;
+use mysqli;
 
+/**
+ * The class for connect db and getting data meeting from db
+ *
+ * */
 class DBMeeting
 {
     private mysqli $_db;
