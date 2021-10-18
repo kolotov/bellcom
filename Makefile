@@ -12,7 +12,8 @@ run:
 	docker-compose stop
 	docker-compose up -d --build
 	docker-compose rm -f composer
-
+	docker-compose exec php docker-php-ext-install mysqli
+	make composer-update
 bash:
 	$(app_exec) web bash
 
