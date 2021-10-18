@@ -10,7 +10,8 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$meeting_id = $_POST['id'] ?? '';
+$method = $_REQUEST['method'] ?? '';
+$meeting_id = $_REQUEST['id'] ?? '';
 $meeting_id = is_numeric($meeting_id) ? intval($meeting_id) : '';
 
 if (is_int($meeting_id) === false) {
@@ -32,8 +33,16 @@ if ($load_meeting->Load() === false) {
 
 $meeting = $load_meeting->getMeeting();
 
-if ($_POST['method'] === 'xml') {
+if ($method === 'xml') {
     $xml = $meeting->getXMLData();
     header('Content-Type: application/xml; charset=utf-8');
     print($xml->asXML());
+    exit(1);
+}
+
+if ($method === 'json') {
+    $json = $meeting->getJSONData();
+    header('Content-Type: application/json; charset=utf-8');
+    print($json);
+    exit(1);
 }
