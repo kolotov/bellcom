@@ -12,7 +12,7 @@ make run
 There are meeting # 1580, # 1582
 
 ### Demo XMLHttpRequest loading
-http://localhost:8080/json_demo.html
+http://localhost:8080/index.html
 
 ### Demo JSON loading
 http://localhost:8080/json_demo.html
