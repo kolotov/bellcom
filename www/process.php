@@ -29,7 +29,8 @@ $db = new DBMeeting(
 
 
 try {
-    $meeting = $db->getMeetingByID($meeting_id);
+    $path = $db->getPathByFileId('meetings_res', $meeting_id);
+    $meeting = new Meeting($path);
 } catch (Exception $e) {
     exit(1);
 }
