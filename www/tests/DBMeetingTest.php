@@ -20,13 +20,11 @@ class DBMeetingTest extends TestCase
         );
     }
 
-    public function testGetMeetingById(): void
+    public function testGetMeetingPath(): void
     {
         $id = 1580;
         $path = "data_xml/XML_1580.xml";
-        $expected_meeting = (new Meeting())->setID(1580)->setPath($path);
-        $meeting = $this->_db->getMeetingByID($id);
 
-        $this->assertObjectEquals($expected_meeting, $meeting);
+        $this->assertEquals($path, $this->_db->getPathByFileId('meetings_res', 1580));
     }
 }
