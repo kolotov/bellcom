@@ -49,23 +49,21 @@ class DBMeeting
         $this->_db->close();
     }
 
-    public function getMeetingByID(int $id): Meeting
+    public function getPathByFileId(string $table, int $id)
     {
         $this->_connect();
-        $meeting = $this
-            ->_db->query("SELECT * FROM `meetings_res` WHERE `file_id` = {$id}")
-            ->fetch_assoc();
+        $result = $this
+            ->_db
+            ->query("SELECT `file_path`  FROM `{$table}` WHERE `file_id` = {$id}");
+
         $this->_close();
 
-        if (empty($meeting)) {
-            throw new Exception('Not found meeting');
+        if ($result === false) {
+            return '';
         }
 
-        $CurMeeting = (new Meeting())
-            ->setID($meeting['file_id'])
-            ->setPath($meeting['file_path'])
-            ->loadXMLFile();
+        $row = $result->fetch_assoc();
 
-        return $CurMeeting;
+        return $row['file_path'] ?? '';
     }
 }
