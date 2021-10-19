@@ -38,7 +38,6 @@ class DBMeeting
             3306
         );
 
-        $this->_db->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
         if ($this->_db->connect_error) {
             throw new Exception("Connection failed: " . $this->_db->connect_error);
         }
