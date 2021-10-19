@@ -86,11 +86,10 @@ class Meeting
     public function printJSON(): void
     {
         header('Content-Type: application/json; charset=utf-8');
-        ob_start();
         try {
             print($this->getJSONData());
         } catch (Exception $e) {
-            ob_end_clean();
+          //
         }
     }
 }
