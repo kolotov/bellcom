@@ -27,29 +27,17 @@ $db = new DBMeeting(
     $_ENV['MYSQL_DATABASE']
 );
 
-
 try {
     $path = $db->getPathByFileId('meetings_res', $meeting_id);
     $meeting = new Meeting($path);
 } catch (Exception $e) {
-    exit(1);
+    die;
 }
 
+switch ($method) {
+case 'xml': $meeting->printXML();
+    break;
 
-if ($method === 'xml') {
-    $xml = $meeting->getXMLData();
-    header('Content-Type: application/xml; charset=utf-8');
-    print($xml->asXML());
-    exit(1);
-}
-
-if ($method === 'json') {
-    try {
-        $json = $meeting->getJSONData();
-    } catch (Exception $e) {
-        exit(1);
-    }
-    header('Content-Type: application/json; charset=utf-8');
-    print($json);
-    exit(1);
+case 'json': $meeting->printJSON();
+    break;
 }

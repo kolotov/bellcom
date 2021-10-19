@@ -32,7 +32,7 @@ function ShowMeetingInfoById(id, el) {
 
 function GetInfo(xml) {
     var txt = "";
-    path = "/root/table[@name='meeting']/fields/field/@*";
+    path = "/fields/field/@*";
 
     if (xml.evaluate) {
         var nodes = xml.evaluate(path, xml, null, XPathResult.ANY_TYPE, null);

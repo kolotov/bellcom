@@ -8,78 +8,66 @@ use Exception;
 use SimpleXMLElement;
 
 /**
- * The class keep data about meeting and
- * function for parsing data from file
- * and function prepare json date
+ * The class keep data about meeting
  *
  * */
 
 class Meeting
 {
-    private $_id;
-    private $_path;
     private SimpleXMLElement $_xml;
 
-    public function __construct()
+    public function __construct(string $path)
     {
+        $this->loadFromXMLFile($path);
     }
 
-    public function setID(int $id): self
+    public function loadFromXMLFile(string $path): self
     {
-        $this->_id = $id;
-        return $this;
-    }
-
-    public function setPath(string $path): self
-    {
-        $this->_path = $path;
-        return $this;
-    }
-
-    public function loadXMLFile(): self
-    {
-        if (!file_exists($this->_path)) {
+        if (!file_exists($path)) {
             throw new Exception('File not found');
         }
 
-        $xml = simplexml_load_file($this->_path, null, LIBXML_NOERROR);
+        $xml = simplexml_load_file($path, null, LIBXML_NOERROR);
 
         if (!is_object($xml)) {
             throw new Exception('Parsing error');
         }
 
-        $this->_xml = $xml;
+        $meeting_arr = $xml->xpath("/root/table[@name='meeting']/*");
+
+        if (!count($meeting_arr)) {
+            throw new Exception('Meeting data not found');
+        }
+
+        $xml = $meeting_arr[0];
+
+        //create new object format xml version="1.0"
+        $this->_xml = new SimpleXMLElement($xml->asXML());
 
         return $this;
     }
 
-    public function getID(): int
+    public function getXMLData(): string
     {
-        return $this->_id;
-    }
-
-    public function getPath(): string
-    {
-        return $this->_path;
-    }
-
-    public function getXMLData(): SimpleXMLElement
-    {
-        return $this->_xml;
+        return $this->_xml->asXML();
     }
 
     public function getJSONData(): string
     {
-        $matches = $this
-            ->_xml
-            ->xpath("/root/table[@name='meeting']/fields/field/@*");
+        return json_encode($this->_toArray());
+    }
 
-        if (!count($matches)) {
-            throw new Exception("Attribute \"meeting\" not found");
+
+    private function _toArray(): array
+    {
+        $fields = $this->_xml->xpath("field/@*");
+
+        if (!count($fields)) {
+            throw new Exception("Error convertation XML to arrry. Field not found");
         }
 
-        $attributes = array_reduce(
-            $matches,
+        return array_reduce(
+            $fields,
             function ($attrs, SimpleXMLElement $xml_obj) {
                 $name = $xml_obj->getName();
                 [$attrs[$name],] = (array) $xml_obj->$name;
@@ -87,14 +75,22 @@ class Meeting
             },
             []
         );
-
-        return json_encode($attributes);
     }
 
-    public function equals(self $other): bool
+    public function printXML(): void
     {
-        return
-            $this->getID() === $other->getID() ||
-            $this->getPath() === $other->getPath();
+        header('Content-Type: application/xml; charset=utf-8');
+        print($this->getXMLData());
+    }
+
+    public function printJSON(): void
+    {
+        header('Content-Type: application/json; charset=utf-8');
+        ob_start();
+        try {
+            print($this->getJSONData());
+        } catch (Exception $e) {
+            ob_end_clean();
+        }
     }
 }
