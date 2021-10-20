@@ -1,7 +1,7 @@
 # Bellcom Estonia test task
 
 ## How to install
-First check ports 8080 and 8000 are free in your docker
+First check ports 8080 and 8000 are free
 
 ```
 git clone https://github.com/kolotov/bellcom.git
