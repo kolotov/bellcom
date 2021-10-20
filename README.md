@@ -1,6 +1,6 @@
 # Bellcom Estonia test task
 
-## How install
+## How to install
 First check ports 8080 and 8000 are free in your docker
 
 ```
@@ -9,7 +9,7 @@ cd bellcom
 make run
 ```
 
-## How use
+## How to use
 For test you can try get info for meetings 1580, 1582
 
 ### Demo XML loading
