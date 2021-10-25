@@ -41,6 +41,9 @@ class DBMeeting
         if ($this->_db->connect_error) {
             throw new Exception("Connection failed: " . $this->_db->connect_error);
         }
+
+        //set charset for to check character set
+        $this->_db->set_charset("latin1");
     }
 
     private function _close(): void
@@ -51,9 +54,16 @@ class DBMeeting
     public function getPathByFileId(string $table, int $id)
     {
         $this->_connect();
-        $result = $this
-            ->_db
-            ->query("SELECT `file_path`  FROM `{$table}` WHERE `file_id` = {$id}");
+
+        //values are of fixed types also string escaping
+        //this is to prevent SQL-injection
+        $query = sprintf(
+            "SELECT `file_path`  FROM `%s` WHERE `file_id` = %d",
+            $this->_db->real_escape_string($table),
+            $id
+        );
+
+        $result = $this->_db->query($query);
 
         $this->_close();
 
