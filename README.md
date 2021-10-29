@@ -1,7 +1,7 @@
 # Bellcom Estonia test task
 The task is about using PHP, database (any RDMS), parsing XML and printing output.
 
-<!--
+
 <details>
   <summary>
 The task is about using PHP, database (any RDMS), parsing XML and printing output.
@@ -31,7 +31,7 @@ You are expected to send back:
 Please look carefully at the comments in italic.
 
 </details>
--->
+
 
 ## How to install
 First check ports 8080 and 8000 are free
