@@ -14,15 +14,18 @@ run:
 	docker-compose rm -f composer
 	docker-compose exec php docker-php-ext-install mysqli
 	docker-compose restart php
-	make composer-update
+	make composer-install
 bash:
 	$(app_exec) web bash
 
 composer-autoload:
 	$(app_run) --rm composer dump-autoload
 
-composer-update:
+composer-install:
 	$(app_run) --rm composer update
+
+composer-update:
+	$(app_run) --rm composer install
 
 composer:
 	$(app_run) --rm composer $(cmd)
