@@ -40,8 +40,8 @@ CREATE TABLE `meetings_res` (
 --
 
 INSERT INTO `meetings_res` (`file_id`, `file_path`) VALUES
-(1580, 'data_xml/XML_1580.xml'),
-(1582, 'data_xml/XML_1582.xml');
+(1011, 'data_xml/data_1011.xml'),
+(1010, 'data_xml/data_1010.xml');
 
 --
 -- Indexes for dumped tables
