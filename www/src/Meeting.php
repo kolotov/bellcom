@@ -33,7 +33,7 @@ class Meeting
             throw new Exception('Parsing error');
         }
 
-        $meeting_arr = $xml->xpath("/root/table[@name='meeting']/*");
+        $meeting_arr = $xml->xpath("/root/event[@name='meeting']/*");
 
         if (!count($meeting_arr)) {
             throw new Exception('Meeting data not found');
