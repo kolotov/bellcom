@@ -22,9 +22,9 @@ class DBMeetingTest extends TestCase
 
     public function testGetMeetingPath(): void
     {
-        $id = 1580;
-        $path = "data_xml/XML_1580.xml";
+        $id = 1010;
+        $path = "data_xml/data_1010.xml";
 
-        $this->assertEquals($path, $this->_db->getPathByFileId('meetings_res', 1580));
+        $this->assertEquals($path, $this->_db->getPathByFileId('meetings_res', 1010));
     }
 }
