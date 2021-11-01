@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root>
+  <event name="meeting">
+    <fields>
+      <field name="Trainig for the team"/>
+      <field sysid="1463"/>
+      <field date="2020-02-11 19:00"/>
+    </fields>
+  </event>
+  <event name="other">
+    <fields>
+      <field name="Local event"/>
+      <field sysid="2344"/>
+      <field date="2020-11-14 12:00"/>
+    </fields>
+  </event>
+</root>
