@@ -22,10 +22,10 @@ composer-autoload:
 	$(app_run) --rm composer dump-autoload
 
 composer-install:
-	$(app_run) --rm composer update
+	$(app_run) --rm composer install
 
 composer-update:
-	$(app_run) --rm composer install
+	$(app_run) --rm composer update
 
 composer:
 	$(app_run) --rm composer $(cmd)
